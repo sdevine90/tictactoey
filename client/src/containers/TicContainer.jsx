@@ -6,7 +6,11 @@ class TicContainer extends React.Component {
     super()
     this.gameArrays =  [[null, null, null], [null, null, null], [null, null, null]];
     this.turn = 'x';
-    this.state = {gameArrays: this.gameArrays, turn: this.turn};
+    this.state = {gameArrays: this.gameArrays, turn: this.turn, winner: ""};
+  }
+
+  setWinner(winner){
+    this.state.winner = winner;
   }
 
   winMethod (){
@@ -21,16 +25,16 @@ class TicContainer extends React.Component {
     var rowThree = this.state.gameArrays[2]
     if ((rowOne[0] === rowTwo[1]) && (rowOne[0] === rowThree[2])){
      if (rowOne[0] === 'x'){
-       alert('x wins with diagonal') 
+       this.setWinner('x wins with diagonal') 
      } else if (rowOne[0] === 'o'){
-       alert('o wins with diagonal')
+       this.setWinner('o wins with diagonal')
      }
    }
     if ((rowOne[2] === rowTwo[1]) && (rowOne[2] === rowThree[0])){
      if (rowOne[2] === 'x'){
-       alert('x wins with diagonal') 
+       this.setWinner('x wins with diagonal') 
      } else if (rowOne[2] === 'o'){
-       alert('o wins with diagonal')
+       this.setWinner('o wins with diagonal')
      }
    }
  }
@@ -42,9 +46,9 @@ class TicContainer extends React.Component {
   for (var i = 0; i < this.state.gameArrays[0].length; i++){
    if ((rowOne[i] === rowTwo[i]) && (rowOne[i] === rowThree[i])){
     if (rowOne[i] === 'x'){
-      alert('x wins with column') 
+      this.setWinner('x wins with column') 
     } else if (rowOne[i] === 'o'){
-      alert('o wins with column')
+      this.setWinner('o wins with column')
     }
   }
 }
@@ -54,9 +58,9 @@ rowWinMethod (){
     var row = this.state.gameArrays[i]
     if ((row[0] === row[1]) && (row[0] === row[2])){
       if (row[0] === 'x'){
-        alert('x wins with row') 
+        this.setWinner('x wins with row') 
       } else if (row[0] === 'o'){
-        alert('o wins with row')
+        this.setWinner('o wins with row')
       }
     }
   }
@@ -108,6 +112,9 @@ render(){
     <Tile func={ function(){this.clickyClick(2, 2)}.bind(this) } text={this.state.gameArrays[2][2]} ></Tile>
     </div>
     </div>
+    </div>
+    <div className="bigContainer">
+    <h4>{this.state.winner}</h4>
     </div>
     </div>
     )
