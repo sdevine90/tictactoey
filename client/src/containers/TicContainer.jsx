@@ -9,6 +9,39 @@ class TicContainer extends React.Component {
     this.state = {gameArrays: this.gameArrays, turn: this.turn};
   }
 
+  winMethod (){
+    this.rowWinMethod()
+    this.columnWinMethod()
+    this.diagnolWinMethod()
+  }
+
+  columnWinMethod(){
+    var rowOne = this.state.gameArrays[0]
+    var rowTwo = this.state.gameArrays[1]
+    var rowThree = this.state.gameArrays[2]
+    for (var i = 0; i < this.state.gameArrays[0].length; i++){
+     if ((rowOne[i] === rowTwo[i]) && (rowOne[i] === rowThree[i])){
+      if (rowOne[i] === 'x'){
+          console.log('x wins') 
+        } else if (rowOne[i] === 'o'){
+          console.log('o wins')
+        }
+     }
+    }
+  }
+  rowWinMethod (){
+    for (var i = 0; i < this.state.gameArrays.length; i++){
+      var row = this.state.gameArrays[i]
+      console.log(row)
+      if ((row[0] === row[1]) && (row[0] === row[2])){
+        if (row[0] === 'x'){
+          console.log('x wins') 
+        } else if (row[0] === 'o'){
+          console.log('o wins')
+        }
+      }
+    }
+  }
   clickyClick (array, pos){
 
     console.log("you clicked a square, it was at position", pos, "in row", array);
@@ -26,7 +59,7 @@ class TicContainer extends React.Component {
       console.log("Sorry, that square's taken!!")
     }
     this.setState({gameArrays: this.gameArrays, turn: this.turn})
-
+    this.winMethod()
   }
 
   render(){
