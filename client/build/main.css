@@ -1,11 +1,26 @@
 body{
   font-size: 3em;
+  background-image: url("/image/desert_sunset.png");
+  background-size: cover;
+}
+
+
+.bigContainer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+
 }
 
 .Grid {
   width: 300px;
   height: 300px;
-  border: 1px solid black;
+  margin: 0;
+  padding: 0;
 }
 
 .Grid>div{
@@ -14,17 +29,22 @@ body{
   height: 33.3%;
   display: flex;
 }
-
+/*
 .Grid>div>Tile {
   border: 1px solid black;
   width: 33.3%;
   height: 100%;
   /*display: inline-block;*/
-}
 
 .tile{
   height: 100%;
   border: 1px solid black;
   width: 33.3%;
   background-color: red;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 10;
 }
